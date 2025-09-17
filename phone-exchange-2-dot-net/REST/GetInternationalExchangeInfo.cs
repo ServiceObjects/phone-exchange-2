@@ -1,0 +1,94 @@
+﻿using System.Web;
+
+namespace phone_exchange_2_dot_net.REST
+{
+    /// <summary>
+    /// Provides functionality to call the ServiceObjects Phone Exchange (PE2) REST API's GetInternationalExchangeInfo endpoint,
+    /// retrieving international phone exchange information (e.g., carrier, line type, formatted numbers) for a given phone number
+    /// with fallback to a backup endpoint for reliability in live mode.
+    /// </summary>
+    public static class GetInternationalExchangeInfoClient
+    {
+        // Base URL constants: production, backup, and trial
+        private const string LiveBaseUrl = "https://sws.serviceobjects.com/pe2/web.svc/json/";
+        private const string BackupBaseUrl = "https://swsbackup.serviceobjects.com/pe2/web.svc/json/";
+        private const string TrialBaseUrl = "https://trial.serviceobjects.com/pe2/web.svc/json/";
+
+        /// <summary>
+        /// Synchronously calls the GetInternationalExchangeInfo REST endpoint to retrieve international phone exchange information,
+        /// attempting the primary endpoint first and falling back to the backup if the response is invalid
+        /// (Error.TypeCode == "3") in live mode.
+        /// </summary>
+        /// <param name="input">The input parameters including phone number, country, and license key.</param>
+        /// <returns>Deserialized <see cref="PE2Response"/> containing international phone exchange data or an error.</returns>
+        public static PE2Response Invoke(GetInternationalExchangeInfoInput input)
+        {
+            // Use query string parameters so missing/optional fields don't break the URL
+            string url = BuildUrl(input, input.IsLive ? LiveBaseUrl : TrialBaseUrl);
+            PE2Response response = Helper.HttpGet<PE2Response>(url, input.TimeoutSeconds);
+
+            // Fallback on error in live mode
+            if (input.IsLive && !IsValid(response))
+            {
+                string fallbackUrl = BuildUrl(input, BackupBaseUrl);
+                PE2Response fallbackResponse = Helper.HttpGet<PE2Response>(fallbackUrl, input.TimeoutSeconds);
+                return fallbackResponse;
+            }
+
+            return response;
+        }
+
+        /// <summary>
+        /// Asynchronously calls the GetInternationalExchangeInfo REST endpoint to retrieve international phone exchange information,
+        /// attempting the primary endpoint first and falling back to the backup if the response is invalid
+        /// (Error.TypeCode == "3") in live mode.
+        /// </summary>
+        /// <param name="input">The input parameters including phone number, country, and license key.</param>
+        /// <returns>Deserialized <see cref="PE2Response"/> containing international phone exchange data or an error.</returns>
+        public static async Task<PE2Response> InvokeAsync(GetInternationalExchangeInfoInput input)
+        {
+            // Use query string parameters so missing/optional fields don't break the URL
+            string url = BuildUrl(input, input.IsLive ? LiveBaseUrl : TrialBaseUrl);
+            PE2Response response = await Helper.HttpGetAsync<PE2Response>(url, input.TimeoutSeconds).ConfigureAwait(false);
+
+            // Fallback on error in live mode
+            if (input.IsLive && !IsValid(response))
+            {
+                string fallbackUrl = BuildUrl(input, BackupBaseUrl);
+                PE2Response fallbackResponse = await Helper.HttpGetAsync<PE2Response>(fallbackUrl, input.TimeoutSeconds).ConfigureAwait(false);
+                return fallbackResponse;
+            }
+
+            return response;
+        }
+
+        // Build the full request URL, including URL-encoded query string
+        public static string BuildUrl(GetInternationalExchangeInfoInput input, string baseUrl)
+        {
+            // Construct query string with URL-encoded parameters
+            string qs = $"GetInternationalExchangeInfo?" +
+                        $"PhoneNumber={Helper.UrlEncode(input.PhoneNumber)}" +
+                        $"&Country={Helper.UrlEncode(input.Country)}" +
+                        $"&LicenseKey={Helper.UrlEncode(input.LicenseKey)}";
+            return baseUrl + qs;
+        }
+
+        private static bool IsValid(PE2Response response) => response?.Error == null || response.Error.TypeCode != "3";
+
+        /// <summary>
+        /// Input parameters for the GetInternationalExchangeInfo API call. Represents a phone number to retrieve international exchange information.
+        /// </summary>
+        /// <param name="PhoneNumber">The phone number to validate (e.g., "+12025550123").</param>
+        /// <param name="Country">ISO2, ISO3, or country name (e.g., "US"). Optional.</param>
+        /// <param name="LicenseKey">The license key to authenticate the API request.</param>
+        /// <param name="IsLive">Indicates whether to use the live service (true) or trial service (false).</param>
+        /// <param name="TimeoutSeconds">Timeout duration for the API call, in seconds.</param>
+        public record GetInternationalExchangeInfoInput(
+            string PhoneNumber = "",
+            string Country = "",
+            string LicenseKey = "",
+            bool IsLive = true,
+            int TimeoutSeconds = 15
+        );
+    }
+}
