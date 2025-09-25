@@ -1,0 +1,5 @@
+Filename,RawURL
+get_exchange_info_rest.js,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-nodejs/REST/get_exchange_info_rest.js
+get_international_exchange_info_rest.js,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-nodejs/REST/get_international_exchange_info_rest.js
+pe2_response.js,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-nodejs/REST/pe2_response.js
+readme.md,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-nodejs/REST/readme.md
