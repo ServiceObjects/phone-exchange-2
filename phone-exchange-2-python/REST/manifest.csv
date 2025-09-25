@@ -1,0 +1,5 @@
+Filename,RawURL
+get_exchange_info_rest.py,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-python/REST/get_exchange_info_rest.py
+get_international_exchange_info_rest.py,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-python/REST/get_international_exchange_info_rest.py
+pe2_response.py,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-python/REST/pe2_response.py
+readme.md,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-python/REST/readme.md
