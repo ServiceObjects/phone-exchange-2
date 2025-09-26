@@ -20,28 +20,26 @@ Our domestic (USA/Canada) Phone Exchange service returns comprehensive carrier a
 // 1. Build the input
 //
 //  Required fields:
-//               LicenseKey
-//               IsLive
+//               licenseKey
+//               isLive
 // 
 // Optional:
-//        PhoneNumber
-//        TimeoutSeconds (default: 15)
+//        phoneNumber
+//        timeoutSeconds (default: 15)
 
 import { GetExchangeInfoSoap } from '../phone-exchange-2-nodejs/SOAP/get_exchange_info_soap.js';
 
-const phoneNumber = '8055551234';
+const phoneNumber = '+18059631700';
 const timeoutSeconds = 15;
+const isLive = false;
+const licenseKey = 'YOUR LICENSE KEY';
 
 // 2. Call the sync Invoke() method.
-const pe2 = new GetExchangeInfoSoap(
-    phoneNumber,
-    licenseKey,
-    isLive,
-    timeoutSeconds
-);
-const response = await pe2.invokeAsync();
+const pe2 = new GetExchangeInfoSoap(phoneNumber,licenseKey,isLive, timeoutSeconds);
+const response = await pe2.getExchangeInfoSoap();
 
 // 3. Inspect results.
+console.log("\n* Exchange Info *\n");
 if (response.Error) {
     console.log("\n* Error *\n");
     console.log(`Error Type    : ${response.Error.Type}`);
@@ -50,31 +48,29 @@ if (response.Error) {
     console.log(`Error DescCode: ${response.Error.DescCode}`);
 }
 
-if (response.ExchangeInfoResults && response.ExchangeInfoResults.length > 0) {
-    for (const exchangeInfo of response.ExchangeInfoResults) {
-        console.log(`Phone Number     : ${exchangeInfo.PhoneNumber}`);
-        console.log(`Carrier Name     : ${exchangeInfo.Name}`);
-        console.log(`City             : ${exchangeInfo.City}`);
-        console.log(`State            : ${exchangeInfo.State}`);
-        console.log(`Country          : ${exchangeInfo.Country}`);
-        console.log(`Line Type        : ${exchangeInfo.LineType}`);
-        console.log(`Time Zone        : ${exchangeInfo.TimeZone}`);
-        console.log(`Latitude         : ${exchangeInfo.Latitude}`);
-        console.log(`Longitude        : ${exchangeInfo.Longitude}`);
-        console.log(`SMS Address      : ${exchangeInfo.SMSAddress}`);
-        console.log(`MMS Address      : ${exchangeInfo.MMSAddress}`);
-        console.log(`Note Codes       : ${exchangeInfo.NoteCodes}`);
-        console.log(`Note Descriptions: ${exchangeInfo.NoteDescriptions}`);
+if (response.ExchangeInfoResults) {
+    console.log(`Phone Number     : ${response.ExchangeInfoResults.ExchangeInfo[0].PhoneNumber}`);
+    console.log(`Carrier Name     : ${response.ExchangeInfoResults.ExchangeInfo[0].Name}`);
+    console.log(`City             : ${response.ExchangeInfoResults.ExchangeInfo[0].City}`);
+    console.log(`State            : ${response.ExchangeInfoResults.ExchangeInfo[0].State}`);
+    console.log(`Country          : ${response.ExchangeInfoResults.ExchangeInfo[0].Country}`);
+    console.log(`Line Type        : ${response.ExchangeInfoResults.ExchangeInfo[0].LineType}`);
+    console.log(`Time Zone        : ${response.ExchangeInfoResults.ExchangeInfo[0].TimeZone}`);
+    console.log(`Latitude         : ${response.ExchangeInfoResults.ExchangeInfo[0].Latitude}`);
+    console.log(`Longitude        : ${response.ExchangeInfoResults.ExchangeInfo[0].Longitude}`);
+    console.log(`SMS Address      : ${response.ExchangeInfoResults.ExchangeInfo[0].SMSAddress}`);
+    console.log(`MMS Address      : ${response.ExchangeInfoResults.ExchangeInfo[0].MMSAddress}`);
+    console.log(`Note Codes       : ${response.ExchangeInfoResults.ExchangeInfo[0].NoteCodes}`);
+    console.log(`Note Descriptions: ${response.ExchangeInfoResults.ExchangeInfo[0].NoteDescriptions}`);
 
-        console.log("\n* Ported Info *\n");
-        if (exchangeInfo.PortedInfo) {
-            console.log(`Original Carrier Name: ${exchangeInfo.PortedInfo.OriginalName}`);
-            console.log(`Original Line Type   : ${exchangeInfo.PortedInfo.OriginalLineType}`);
-            console.log(`Ported Date          : ${exchangeInfo.PortedInfo.PortedDate}`);
-            console.log(`LATA                 : ${exchangeInfo.PortedInfo.LATA}`);
-        } else {
-            console.log("No ported info found.");
-        }
+    console.log("\n* Ported Info *\n");
+    if (response.ExchangeInfoResults.ExchangeInfo[0].PortedInfo) {
+        console.log(`Original Carrier Name: ${response.ExchangeInfoResults.ExchangeInfo[0].PortedInfo.OriginalName}`);
+        console.log(`Original Line Type   : ${response.ExchangeInfoResults.ExchangeInfo[0].PortedInfo.OriginalLineType}`);
+        console.log(`Ported Date          : ${response.ExchangeInfoResults.ExchangeInfo[0].PortedInfo.PortedDate}`);
+        console.log(`LATA                 : ${response.ExchangeInfoResults.ExchangeInfo[0].PortedInfo.LATA}`);
+    } else {
+        console.log("No ported info found.");
     }
 } else {
     console.log("No exchange info results found.");
@@ -92,31 +88,28 @@ Our international Phone Exchange service validates and formats phone numbers for
 // 1. Build the input
 //
 //  Required fields:
-//               LicenseKey
-//               IsLive
+//               licenseKey
+//               isLive
 // 
 // Optional:
-//        PhoneNumber
-//        Country
-//        TimeoutSeconds (default: 15)
+//        phoneNumber
+//        country
+//        timeoutSeconds (default: 15)
 
 import { GetInternationalExchangeInfoSoap } from '../phone-exchange-2-nodejs/SOAP/get_international_exchange_info_soap.js';
 
 const phoneNumber = '+12025550123';
 const country = 'US';
 const timeoutSeconds = 15;
+const isLive = false;
+const licenseKey = 'YOUR LICENSE KEY';
 
 // 2. Call the sync Invoke() method.
-const pe2 = new GetInternationalExchangeInfoSoap(
-    phoneNumber,
-    country,
-    licenseKey,
-    isLive,
-    timeoutSeconds
-);
-const response = await pe2.invokeAsync();
+const pe2 = new GetInternationalExchangeInfoSoap(phoneNumber,country,licenseKey,isLive,timeoutSeconds);
+const response = await pe2.getInternationalExchangeInfoSoap();
 
 // 3. Inspect results.
+console.log("\n* International Exchange Info *\n");
 if (response.Error) {
     console.log("\n* Error *\n");
     console.log(`Error Type    : ${response.Error.Type}`);
@@ -126,7 +119,7 @@ if (response.Error) {
 }
 
 if (response.InternationalExchangeInfo) {
-    console.log(`Phone Number In     : ${response.InternationalExchangeInfo.PhoneNumberIn}`);
+    console.log(`Phone Number In     : ${response.InternationalExchangeInfo.NumberIn}`);
     console.log(`Country Code        : ${response.InternationalExchangeInfo.CountryCode}`);
     console.log(`Format National     : ${response.InternationalExchangeInfo.FormatNational}`);
     console.log(`Extension           : ${response.InternationalExchangeInfo.Extension}`);

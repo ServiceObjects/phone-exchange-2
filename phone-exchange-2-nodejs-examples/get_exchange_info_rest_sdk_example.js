@@ -5,40 +5,17 @@ async function GetExchangeInfoRestGo(licenseKey, isLive) {
     console.log('PhoneExchange2 - GetExchangeInfo - REST SDK');
     console.log('-------------------------------------------');
 
-    const phoneNumber = '8055551234';
-    const countryCode = '1';
-    const country = 'US';
-    const ipAddress = '';
-    const callerCountry = '';
-    const extras = '';
-    const token = '';
+    const phoneNumber = '+18059631700';
     const timeoutSeconds = 15;
 
     console.log('\n* Input *\n');
-    console.log(`Phone Number  : ${phoneNumber}`);
-    console.log(`Country Code  : ${countryCode}`);
-    console.log(`Country       : ${country}`);
-    console.log(`IP Address    : ${ipAddress}`);
-    console.log(`Caller Country: ${callerCountry}`);
-    console.log(`Extras        : ${extras}`);
-    console.log(`Token         : ${token}`);
-    console.log(`License Key   : ${licenseKey}`);
-    console.log(`Is Live       : ${isLive}`);
+    console.log(`Phone Number   : ${phoneNumber}`);
+    console.log(`License Key    : ${licenseKey}`);
+    console.log(`Is Live        : ${isLive}`);
     console.log(`Timeout Seconds: ${timeoutSeconds}`);
 
     try {
-        const response = await GetExchangeInfoClient.invoke(
-            phoneNumber,
-            countryCode,
-            country,
-            ipAddress,
-            callerCountry,
-            extras,
-            token,
-            licenseKey,
-            isLive,
-            timeoutSeconds
-        );
+        const response = await GetExchangeInfoClient.invoke(phoneNumber, licenseKey, isLive, timeoutSeconds);
 
         if (response.Error) {
             console.log('\n* Error *\n');

@@ -20,32 +20,22 @@ Our domestic (USA/Canada) Phone Exchange service returns comprehensive carrier a
 // 1. Build the input
 //
 //  Required fields:
-//               LicenseKey
-//               IsLive
+//               license_key
+//               is_live
 // 
 // Optional:
-//        PhoneNumber
-//        CountryCode
-//        Country
-//        IP Address
-//        CallerCountry
-//        Extras	
-//        Token
-//        TimeoutSeconds (default: 15)
+//        phone__number
+//        timeout_seconds (default: 15)
 
 from get_exchange_info_rest import get_exchange_info
 
-phoneNumber = '8055551234';
-countryCode = '1';
-country = 'US';
-ipAddress = '';
-callerCountry = '';
-extras = '';
-token = '';
-timeoutSeconds = 15;
+license_key = "8059631700"
+timeout_seconds = 15
+is_live = False
+license_key = "YOUR LICENSE KEY"
 
 // 2. Call the method.
-response = get_exchange_info(phone_number, country_code, country, ip_address, caller_country, extras, license_key, is_live)
+response = get_exchange_info(phone_number, license_key, is_live)
 
 // 3. Inspect results.
 print("\r\n* Exchange Info *\r\n")
@@ -98,19 +88,20 @@ Our international Phone Exchange service validates and formats phone numbers for
 // 1. Build the input
 //
 //  Required fields:
-//               LicenseKey
-//               IsLive
+//               license_key
+//               is_live
 // 
 // Optional:
-//        PhoneNumber
-//        Country
-//        TimeoutSeconds (default: 15)
+//        phone_number
+//        country
+//        timeout_seconds (default: 15)
 
 from get_international_exchange_info_rest import get_international_exchange_info
 
-phoneNumber = '+12025550123';
-country = 'US';
-timeoutSeconds = 15;
+phone_number = "+18059631700"
+country = "US"
+timeout_seconds = 15
+license_key = "YOUR LICENSE KEY"
 
 // 2. Call the sync Invoke() method.
 response = get_international_exchange_info(phone_number, country, license_key, is_live)

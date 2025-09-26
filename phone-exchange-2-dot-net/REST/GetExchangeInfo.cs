@@ -69,12 +69,6 @@ namespace phone_exchange_2_dot_net.REST
             // Construct query string with URL-encoded parameters
             string qs = $"GetExchangeInfo?" +
                         $"PhoneNumber={Helper.UrlEncode(input.PhoneNumber)}" +
-                        $"&CountryCode={Helper.UrlEncode(input.CountryCode)}" +
-                        $"&Country={Helper.UrlEncode(input.Country)}" +
-                        $"&IPAddress={Helper.UrlEncode(input.IPAddress)}" +
-                        $"&CallerCountry={Helper.UrlEncode(input.CallerCountry)}" +
-                        $"&Extras={Helper.UrlEncode(input.Extras)}" +
-                        $"&Token={Helper.UrlEncode(input.Token)}" +
                         $"&LicenseKey={Helper.UrlEncode(input.LicenseKey)}";
             return baseUrl + qs;
         }

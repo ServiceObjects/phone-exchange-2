@@ -1,5 +1,4 @@
 Filename,RawURL
 get_exchange_info_soap.js,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-nodejs/SOAP/get_exchange_info_soap.js
 get_international_exchange_info_soap.js,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-nodejs/SOAP/get_international_exchange_info_soap.js
-pe2_response.js,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-nodejs/SOAP/pe2_response.js
 readme.md,https://raw.githubusercontent.com/ServiceObjects/phone-exchange-2/master/phone-exchange-2-nodejs/SOAP/readme.md

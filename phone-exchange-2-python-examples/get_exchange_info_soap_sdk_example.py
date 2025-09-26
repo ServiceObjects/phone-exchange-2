@@ -11,7 +11,7 @@ def get_exchange_info_soap_sdk_go(is_live: bool, license_key: str) -> None:
     print("PhoneExchange - GetExchangeInfo - SOAP SDK")
     print("------------------------------------------")
 
-    phone_number = "805-555-1212"
+    phone_number = "805-963-1700"
     timeout_seconds = 15
 
     print("\r\n* Input *\r\n")

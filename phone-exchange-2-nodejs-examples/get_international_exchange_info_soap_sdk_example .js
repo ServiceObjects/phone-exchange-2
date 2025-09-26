@@ -5,7 +5,7 @@ async function GetInternationalExchangeInfoSoapGo(licenseKey, isLive) {
     console.log("PhoneExchange2 - GetInternationalExchangeInfo - SOAP SDK");
     console.log("--------------------------------------------------------");
 
-    const phoneNumber = "+12025550123";
+    const phoneNumber = "+18059631700";
     const country = "US";
     const timeoutSeconds = 15;
 
@@ -17,14 +17,8 @@ async function GetInternationalExchangeInfoSoapGo(licenseKey, isLive) {
     console.log(`Timeout Seconds: ${timeoutSeconds}`);
 
     try {
-        const pe2 = new GetInternationalExchangeInfoSoap(
-            phoneNumber,
-            country,
-            licenseKey,
-            isLive,
-            timeoutSeconds
-        );
-        const response = await pe2.invokeAsync();
+        const pe2 = new GetInternationalExchangeInfoSoap(phoneNumber,country,licenseKey,isLive,timeoutSeconds);
+        const response = await pe2.getInternationalExchangeInfoSoap();
 
         console.log("\n* International Exchange Info *\n");
         if (response.Error) {
@@ -36,7 +30,7 @@ async function GetInternationalExchangeInfoSoapGo(licenseKey, isLive) {
         }
 
         if (response.InternationalExchangeInfo) {
-            console.log(`Phone Number In     : ${response.InternationalExchangeInfo.PhoneNumberIn}`);
+            console.log(`Phone Number In     : ${response.InternationalExchangeInfo.NumberIn}`);
             console.log(`Country Code        : ${response.InternationalExchangeInfo.CountryCode}`);
             console.log(`Format National     : ${response.InternationalExchangeInfo.FormatNational}`);
             console.log(`Extension           : ${response.InternationalExchangeInfo.Extension}`);

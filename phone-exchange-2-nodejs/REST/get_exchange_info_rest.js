@@ -77,26 +77,14 @@ const GetExchangeInfoClient = {
      * first and falling back to the backup if the response is invalid (Error.TypeCode == '3') in live mode.
      * </summary>
      * @param {string} PhoneNumber - The phone number to validate (e.g., "1234567890").
-     * @param {string} CountryCode - 1-3 digit country calling code (e.g., "1"). Optional.
-     * @param {string} Country - ISO2, ISO3, or country name (e.g., "US"). Optional.
-     * @param {string} IPAddress - IPv4 address. Optional.
-     * @param {string} CallerCountry - ISO2 or ISO3 code representing the caller's country. Optional.
-     * @param {string} Extras - Comma-separated list of possible options. Optional.
-     * @param {string} Token - Your token to use the service. Sign up for a free token at.
      * @param {string} LicenseKey - Your license key to use the service.
      * @param {boolean} isLive - Value to determine whether to use the live or trial servers.
      * @param {number} timeoutSeconds - Timeout, in seconds, for the call to the service.
      * @returns {Promise<PE2Response>} - A promise that resolves to a PE2Response object.
      */
-    async invokeAsync(PhoneNumber, CountryCode, Country, IPAddress, CallerCountry, Extras,Token, LicenseKey, isLive = true, timeoutSeconds = 15) {
+    async invokeAsync(PhoneNumber, LicenseKey, isLive = true, timeoutSeconds = 15) {
         const params = {
             PhoneNumber,
-            CountryCode,
-            Country,
-            IPAddress,
-            CallerCountry,
-            Extras,
-            Token,
             LicenseKey
         };
 
@@ -117,20 +105,14 @@ const GetExchangeInfoClient = {
      * and awaiting its result immediately.
      * </summary>
      * @param {string} PhoneNumber - The phone number to validate (e.g., "1234567890").
-     * @param {string} CountryCode - 1-3 digit country calling code (e.g., "1"). Optional.
-     * @param {string} Country - ISO2, ISO3, or country name (e.g., "US"). Optional.
-     * @param {string} IPAddress - IPv4 address. Optional.
-     * @param {string} CallerCountry - ISO2 or ISO3 code representing the caller's country. Optional.
-     * @param {string} Extras - Comma-separated list of possible options. Optional.
-     * @param {string} Token - Your token to use the service. Sign up for a free token at.
      * @param {string} LicenseKey - Your license key to use the service.
      * @param {boolean} isLive - Value to determine whether to use the live or trial servers.
      * @param {number} timeoutSeconds - Timeout, in seconds, for the call to the service.
      * @returns {PE2Response} - A PE2Response object with phone exchange details or an error.
      */
-    invoke(PhoneNumber, CountryCode, Country, IPAddress, CallerCountry, Extras,Token, LicenseKey, isLive = true, timeoutSeconds = 15) {
+    invoke(PhoneNumber, LicenseKey, isLive = true, timeoutSeconds = 15) {
         return (async () => await this.invokeAsync(
-            PhoneNumber, CountryCode, Country, IPAddress, CallerCountry, Extras, Token, LicenseKey, isLive, timeoutSeconds
+            PhoneNumber, LicenseKey, isLive, timeoutSeconds
         ))();
     }
 };

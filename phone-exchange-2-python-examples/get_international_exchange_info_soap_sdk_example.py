@@ -10,7 +10,7 @@ def get_international_exchange_info_soap_sdk_go(is_live: bool, license_key: str)
     print("PhoneExchange - GetInternationalExchangeInfo - SOAP SDK")
     print("-------------------------------------------------------")
 
-    phone_number = "+12025550123"
+    phone_number = "+18059631700"
     country = "US"
     timeout_seconds = 15
 

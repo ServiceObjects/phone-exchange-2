@@ -20,43 +20,22 @@ Our domestic (USA/Canada) Phone Exchange service returns comprehensive carrier a
 // 1. Build the input
 //
 //  Required fields:
-//               LicenseKey
-//               IsLive
+//               licenseKey
+//               isLive
 // 
 // Optional:
-//        PhoneNumber
-//        CountryCode
-//        Country
-//        IP Address
-//        CallerCountry
-//        Extras	
-//        Token
-//        TimeoutSeconds (default: 15)
+//        phoneNumber
+//        timeoutSeconds (default: 15)
 
 import { GetExchangeInfoClient } from '../phone-exchange-2-nodejs/REST/get_exchange_info_rest.js';
 
-const phoneNumber = '8055551234';
-const countryCode = '1';
-const country = 'US';
-const ipAddress = '';
-const callerCountry = '';
-const extras = '';
-const token = '';
+const phoneNumber = '+18059631700';
 const timeoutSeconds = 15;
+const isLive = false;
+const licenseKey = 'YOUR LICENSE KEY';
 
 // 2. Call the sync Invoke() method.
-const response = await GetExchangeInfoClient.invoke(
-    phoneNumber,
-    countryCode,
-    country,
-    ipAddress,
-    callerCountry,
-    extras,
-    token
-    licenseKey,
-    isLive,
-    timeoutSeconds
-);
+const response = await GetExchangeInfoClient.invoke(phoneNumber, licenseKey, isLive, timeoutSeconds);
 
 // 3. Inspect results.
 if (response.Error) {
@@ -110,28 +89,24 @@ Our international Phone Exchange service validates and formats phone numbers for
 // 1. Build the input
 //
 //  Required fields:
-//               LicenseKey
-//               IsLive
+//               licenseKey
+//               isLive
 // 
 // Optional:
-//        PhoneNumber
-//        Country
-//        TimeoutSeconds (default: 15)
+//        phoneNumber
+//        country
+//        timeoutSeconds (default: 15)
 
 import { GetInternationalExchangeInfoClient } from '../phone-exchange-2-nodejs/REST/get_international_exchange_info_rest.js';
 
-const phoneNumber = '+12025550123';
+const phoneNumber = '+18059631700';
 const country = 'US';
 const timeoutSeconds = 15;
+const isLive = false;
+const licenseKey = 'YOUR LICENSE KEY';
 
 // 2. Call the sync Invoke() method.
-const response = await GetInternationalExchangeInfoClient.invoke(
-    phoneNumber,
-    country,
-    licenseKey,
-    isLive,
-    timeoutSeconds
-);
+const response = await GetInternationalExchangeInfoClient.invoke(phoneNumber, country, licenseKey, isLive, timeoutSeconds);
 
 // 3. Inspect results.
 if (response.Error) {

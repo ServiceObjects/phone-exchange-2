@@ -11,13 +11,7 @@ namespace phone_exchange_2_dot_net_examples
             Console.WriteLine("-------------------------------------------");
 
             GetExchangeInfoClient.GetExchangeInfoInput getExchangeInfoInput = new(
-                PhoneNumber: "805-555-1212",
-                CountryCode: "1",
-                Country: "US",
-                IPAddress: "",
-                CallerCountry: "",
-                Extras: "",
-                Token: "",
+                PhoneNumber: "805-963-1700",
                 LicenseKey: licenseKey,
                 IsLive: isLive,
                 TimeoutSeconds: 15
@@ -25,12 +19,6 @@ namespace phone_exchange_2_dot_net_examples
 
             Console.WriteLine("\r\n* Input *\r\n");
             Console.WriteLine($"Phone Number  : {getExchangeInfoInput.PhoneNumber}");
-            Console.WriteLine($"Country Code  : {getExchangeInfoInput.CountryCode}");
-            Console.WriteLine($"Country       : {getExchangeInfoInput.Country}");
-            Console.WriteLine($"IP Address    : {getExchangeInfoInput.IPAddress}");
-            Console.WriteLine($"Caller Country: {getExchangeInfoInput.CallerCountry}");
-            Console.WriteLine($"Extras        : {getExchangeInfoInput.Extras}");
-            Console.WriteLine($"Token         : {getExchangeInfoInput.Token}");
             Console.WriteLine($"License Key   : {getExchangeInfoInput.LicenseKey}");
             Console.WriteLine($"Is Live       : {getExchangeInfoInput.IsLive}");
 

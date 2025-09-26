@@ -11,7 +11,7 @@ namespace phone_exchange_2_dot_net_examples
             Console.WriteLine("--------------------------------------------------------");
 
             GetInternationalExchangeInfoClient.GetInternationalExchangeInfoInput getInternationalExchangeInfoInput = new(
-                PhoneNumber: "+12025550123",
+                PhoneNumber: "+18059631700",
                 Country: "US",
                 LicenseKey: licenseKey,
                 IsLive: isLive,

@@ -1,5 +1,4 @@
 import { soap } from 'strong-soap'
-import { PE2Response } from './pe2_response.js';
 /**
  * A class that provides functionality to call the ServiceObjects Phone Exchange (PE2) SOAP service's GetInternationalExchangeInfo endpoint,
  * retrieving international phone exchange information (e.g., country code, line type, locality) for a given phone number with fallback to a backup endpoint for reliability in live mode.
@@ -15,10 +14,6 @@ class GetInternationalExchangeInfoSoap {
      * @param {number} timeoutSeconds - Timeout, in seconds, for the call to the service.
      */
     constructor(PhoneNumber, Country, LicenseKey, isLive, timeoutSeconds) {
-        if (!LicenseKey) {
-            throw new Error('LicenseKey is required.');
-        }
-
         this.args = {
             PhoneNumber,
             Country,
@@ -42,21 +37,21 @@ class GetInternationalExchangeInfoSoap {
      * or if the primary call fails.
      * @returns {Promise} A promise that resolves to a PE2Response object containing international exchange info or an error.
      */
-    async invokeAsync() {
+    async getInternationalExchangeInfoSoap() {
         try {
             const primaryResult = await this._callSoap(this._primaryWsdl, this.args);
 
             if (this.isLive && !this._isValid(primaryResult)) {
                 console.warn("Primary returned Error.TypeCode == '3', falling back to backup...");
                 const backupResult = await this._callSoap(this._backupWsdl, this.args);
-                return new PE2Response(backupResult);
+                return backupResult;
             }
 
-            return new PE2Response(primaryResult);
+            return primaryResult;
         } catch (primaryErr) {
             try {
                 const backupResult = await this._callSoap(this._backupWsdl, this.args);
-                return new PE2Response(backupResult);
+                return backupResult;
             } catch (backupErr) {
                 throw new Error(`Both primary and backup calls failed:\nPrimary: ${primaryErr.message}\nBackup: ${backupErr.message}`);
             }

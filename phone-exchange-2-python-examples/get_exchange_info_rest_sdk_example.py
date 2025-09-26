@@ -11,29 +11,17 @@ def get_exchange_info_rest_sdk_go(is_live: bool, license_key: str) -> None:
     print("PhoneExchange - GetExchangeInfo - REST SDK")
     print("------------------------------------------")
 
-    phone_number = "805-555-1212"
-    country_code = "1"
-    country = "US"
-    ip_address = ""
-    caller_country = ""
-    extras = ""
-    token = ""
+    phone_number = "805-963-1700"
     timeout_seconds = 10  
 
     print("\r\n* Input *\r\n")
     print(f"Phone Number   : {phone_number}")
-    print(f"Country Code   : {country_code}")
-    print(f"Country        : {country}")
-    print(f"IP Address     : {ip_address}")
-    print(f"Caller Country : {caller_country}")
-    print(f"Extras         : {extras}")
-    print(f"Token          : {token}")
     print(f"License Key    : {license_key}")
     print(f"Is Live        : {is_live}")
     print(f"Timeout Seconds: {timeout_seconds}")
 
     try:
-        response = get_exchange_info(phone_number, country_code, country, ip_address, caller_country, extras, token, license_key, is_live)
+        response = get_exchange_info(phone_number, license_key, is_live)
 
         print("\r\n* Exchange Info *\r\n")
         if response and not response.Error:

@@ -25,24 +25,12 @@ Our domestic (USA/Canada) Phone Exchange service returns comprehensive carrier a
 // 
 // Optional:
 //        PhoneNumber
-//        CountryCode
-//        Country
-//        IP Address
-//        CallerCountry
-//        Extras	
-//        Token
 //        TimeoutSeconds (default: 15)
 
 using phone_exchange_2_dot_net.REST;
 
 GetExchangeInfoClient.GetExchangeInfoInput getExchangeInfoInput = new(
-    PhoneNumber: "805-555-1212",
-    CountryCode: "1",
-    Country: "US",
-    IPAddress: "",
-    CallerCountry: "",
-    Extras: "",
-    Token: "",
+    PhoneNumber: "805-963-1700",
     LicenseKey: licenseKey,
     IsLive: isLive,
     TimeoutSeconds: 15
@@ -124,7 +112,7 @@ Our international Phone Exchange service validates and formats phone numbers for
 using phone_exchange_2_dot_net.REST;
 
 GetInternationalExchangeInfoClient.GetInternationalExchangeInfoInput getInternationalExchangeInfoInput = new(
-    PhoneNumber: "+12025550123",
+    PhoneNumber: "+18059631700",
     Country: "US",
     LicenseKey: licenseKey,
     IsLive: isLive,

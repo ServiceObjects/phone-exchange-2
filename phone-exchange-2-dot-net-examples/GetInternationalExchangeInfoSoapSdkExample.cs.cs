@@ -11,7 +11,7 @@ namespace phone_exchange_2_dot_net_examples
             Console.WriteLine("PhoneExchange2 - GetInternationalExchangeInfo - SOAP SDK");
             Console.WriteLine("--------------------------------------------------------");
 
-            string PhoneNumber = "+12025550123";
+            string PhoneNumber = "+18059631700";
             string Country = "US";
 
             Console.WriteLine("\r\n* Input *\r\n");

@@ -8,12 +8,6 @@ trial_url = "https://trial.serviceobjects.com/pe2/web.svc/json/GetExchangeInfo?"
 
 def get_exchange_info(
     phone_number: str,
-    country_code: str = None,
-    country: str = None,
-    ip_address: str = None,
-    caller_country: str = None,
-    extras: str = None,
-    token: str = None,
     license_key: str = None,
     is_live: bool = True
 ) -> PE2Response:
@@ -23,12 +17,6 @@ def get_exchange_info(
 
     Parameters:
         phone_number: The phone number to validate (e.g., "8051234567").
-        country_code: 1-3 digit Country Calling Code (e.g., "1"). Optional.
-        country: ISO2, ISO3, or CountryName (e.g., "US"). Optional.
-        ip_address: IPv4 address. Optional.
-        caller_country: ISO2 or ISO3 code representing the caller's country. Optional.
-        extras: Comma-separated list of possible options. Optional.
-        token: Your token to use the service. Sign up for a free token at.
         license_key: Your ServiceObjects license key.
         is_live: Use live or trial servers.
 
@@ -41,12 +29,6 @@ def get_exchange_info(
     """
     params = {
         "PhoneNumber": phone_number,
-        "CountryCode": country_code,
-        "Country": country,
-        "IPAddress": ip_address,
-        "CallerCountry": caller_country,
-        "Extras": extras,
-        "Token": token,
         "LicenseKey": license_key,
     }
     # Select the base URL: production vs trial

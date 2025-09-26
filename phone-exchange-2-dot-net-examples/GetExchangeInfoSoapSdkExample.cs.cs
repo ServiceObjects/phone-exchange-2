@@ -11,7 +11,7 @@ namespace phone_exchange_2_dot_net_examples
             Console.WriteLine("PhoneExchange2 - GetExchangeInfo - SOAP SDK");
             Console.WriteLine("-------------------------------------------");
 
-            string PhoneNumber = "805-555-1212";
+            string PhoneNumber = "805-963-1700";
 
             Console.WriteLine("\r\n* Input *\r\n");
             Console.WriteLine($"Phone Number  : {PhoneNumber}");

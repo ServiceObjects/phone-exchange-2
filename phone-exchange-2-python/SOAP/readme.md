@@ -20,17 +20,19 @@ Our domestic (USA/Canada) Phone Exchange service returns comprehensive carrier a
 // 1. Build the input
 //
 //  Required fields:
-//               LicenseKey
-//               IsLive
+//               license_key
+//               is_live
 // 
 // Optional:
-//        PhoneNumber
-//        TimeoutSeconds (default: 15)
+//        phone_number
+//        timeout_seconds (default: 15)
 
 from get_exchange_info_soap import GetExchangeInfoSoap
 
-phone_number = "805-555-1212"
+phone_number = "805-963-1700"
 timeout_seconds = 15
+is_live = False
+license_key = "YOUR LICENSE KEY"
 
 // 2. Call the method.
 service = GetExchangeInfoSoap(license_key, is_live, timeout_seconds * 1000)
@@ -90,19 +92,21 @@ Our international Phone Exchange service validates and formats phone numbers for
 // 1. Build the input
 //
 //  Required fields:
-//               LicenseKey
-//               IsLive
+//               license_key
+//               is_live
 // 
 // Optional:
-//        PhoneNumber
-//        Country
-//        TimeoutSeconds (default: 15)
+//        phone_number
+//        country
+//        timeout_seconds (default: 15)
 
 from get_international_exchange_info_soap import GetInternationalExchangeInfoSoap
 
-phoneNumber = '+12025550123';
-country = 'US';
-timeoutSeconds = 15;
+phone_number = "+18059631700"
+country = "US"
+timeout_seconds = 15
+is_live = False
+license_key = "YOUR LICENSE KEY"
 
 // 2. Call the sync Invoke() method.
 service = GetInternationalExchangeInfoSoap(license_key, is_live, timeout_seconds * 1000)

@@ -31,7 +31,7 @@ Our domestic (USA/Canada) Phone Exchange service returns comprehensive carrier a
 
 
 // 3. Call the ervice
-string PhoneNumber = "805-555-1212";
+string PhoneNumber = "805-963-1700";
 
 ExchangeInfoResponse response = pe2.GetExchangeInfo(PhoneNumber, licenseKey).Result;
 
@@ -108,7 +108,7 @@ Our international Phone Exchange service validates and formats phone numbers for
 //        TimeoutSeconds (default: 15)
 
 // 3 Call the service
-string PhoneNumber = "+12025550123";
+string PhoneNumber = "+18059631700";
 string Country = "US";
 
 InternationalExchangeInfoResponse response = pe2.GetInternationalExchangeInfo(PhoneNumber, Country, licenseKey).Result;

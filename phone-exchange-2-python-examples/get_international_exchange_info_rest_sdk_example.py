@@ -11,7 +11,7 @@ def get_international_exchange_info_rest_sdk_go(is_live: bool, license_key: str)
     print("PhoneExchange - GetInternationalExchangeInfo - REST SDK")
     print("-------------------------------------------------------")
 
-    phone_number = "+12025550123"
+    phone_number = "+18059631700"
     country = "US"
 
     print("\r\n* Input *\r\n")
