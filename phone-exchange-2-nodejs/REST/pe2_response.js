@@ -1,19 +1,19 @@
 export class ExchangeInfo {
     constructor(data = {}) {
-        this.PhoneNumber = data.PhoneNumber || null;
-        this.Name = data.Name || null;
-        this.City = data.City || null;
-        this.State = data.State || null;
-        this.Country = data.Country || null;
-        this.LineType = data.LineType || null;
-        this.TimeZone = data.TimeZone || null;
-        this.Latitude = data.Latitude || null;
-        this.Longitude = data.Longitude || null;
-        this.SMSAddress = data.SMSAddress || null;
-        this.MMSAddress = data.MMSAddress || null;
-        this.PortedInfo = data.PortedInfo || null;
-        this.NoteCodes = data.NoteCodes || null;
-        this.NoteDescriptions = data.NoteDescriptions || null;
+        this.PhoneNumber = data.PhoneNumber;
+        this.Name = data.Name;
+        this.City = data.City;
+        this.State = data.State;
+        this.Country = data.Country;
+        this.LineType = data.LineType;
+        this.TimeZone = data.TimeZone;
+        this.Latitude = data.Latitude;
+        this.Longitude = data.Longitude;
+        this.SMSAddress = data.SMSAddress;
+        this.MMSAddress = data.MMSAddress;
+        this.PortedInfo = data.PortedInfo;
+        this.NoteCodes = data.NoteCodes;
+        this.NoteDescriptions = data.NoteDescriptions;
     }
 
     toString() {
@@ -26,10 +26,10 @@ export class ExchangeInfo {
  */
 export class PortedInfo {
     constructor(data = {}) {
-        this.OriginalName = data.OriginalName || null;
-        this.OriginalLineType = data.OriginalLineType || null;
-        this.PortedDate = data.PortedDate || null;
-        this.LATA = data.LATA || null;
+        this.OriginalName = data.OriginalName;
+        this.OriginalLineType = data.OriginalLineType;
+        this.PortedDate = data.PortedDate;
+        this.LATA = data.LATA;
     }
 
     toString() {
@@ -42,28 +42,28 @@ export class PortedInfo {
  */
 export class InternationalExchangeInfo {
     constructor(data = {}) {
-        this.PhoneNumberIn = data.NumberIn || null;
-        this.CountryCode = data.CountryCode || null;
-        this.FormatNational = data.FormatNational || null;
-        this.Extension = data.Extension || null;
-        this.Locality = data.Locality || null;
-        this.LocalityMatchLevel = data.LocalityMatchLevel || null;
-        this.TimeZone = data.TimeZone || null;
-        this.Latitude = data.Latitude || null;
-        this.Longitude = data.Longitude || null;
-        this.Country = data.Country || null;
-        this.CountryISO2 = data.CountryISO2 || null;
-        this.CountryISO3 = data.CountryISO3 || null;
-        this.FormatInternational = data.FormatInternational || null;
-        this.FormatE164 = data.FormatE164 || null;
-        this.Carrier = data.Carrier || null;
-        this.LineType = data.LineType || null;
-        this.SMSAddress = data.SMSAddress || null;
-        this.MMSAddress = data.MMSAddress || null;
+        this.PhoneNumberIn = data.NumberIn;
+        this.CountryCode = data.CountryCode;
+        this.FormatNational = data.FormatNational;
+        this.Extension = data.Extension;
+        this.Locality = data.Locality;
+        this.LocalityMatchLevel = data.LocalityMatchLevel;
+        this.TimeZone = data.TimeZone;
+        this.Latitude = data.Latitude;
+        this.Longitude = data.Longitude;
+        this.Country = data.Country;
+        this.CountryISO2 = data.CountryISO2;
+        this.CountryISO3 = data.CountryISO3;
+        this.FormatInternational = data.FormatInternational;
+        this.FormatE164 = data.FormatE164;
+        this.Carrier = data.Carrier;
+        this.LineType = data.LineType;
+        this.SMSAddress = data.SMSAddress;
+        this.MMSAddress = data.MMSAddress;
         this.IsValid = data.IsValid !== undefined ? data.IsValid : null;
         this.IsValidForRegion = data.IsValidForRegion !== undefined ? data.IsValidForRegion : null;
-        this.NoteCodes = data.NoteCodes || null;
-        this.NoteDescriptions = data.NoteDescriptions || null;
+        this.NoteCodes = data.NoteCodes;
+        this.NoteDescriptions = data.NoteDescriptions;
     }
 
     toString() {
@@ -76,10 +76,10 @@ export class InternationalExchangeInfo {
  */
 export class Error {
     constructor(data = {}) {
-        this.Desc = data.Desc || null;
-        this.TypeCode = data.TypeCode || null;
-        this.DescCode = data.DescCode || null;
-        this.Type = data.Type || null;
+        this.Desc = data.Desc;
+        this.TypeCode = data.TypeCode;
+        this.DescCode = data.DescCode;
+        this.Type = data.Type;
     }
 
     toString() {
